@@ -1,8 +1,7 @@
 {
-  "name": "console-plugin-template",
+  "name": "hello-console-plugin",
   "version": "0.0.1",
   "private": true,
-  "repository": "git@github.com:spadgett/console-plugin-template.git",
   "scripts": {
     "clean": "rm -rf dist",
     "build": "yarn clean && NODE_ENV=production yarn ts-node node_modules/.bin/webpack",
@@ -35,6 +34,7 @@
     "react-i18next": "^11.8.11",
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
+    "react-query": "^3.17.0",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.3.1",
     "ts-node": "^10.8.1",
@@ -44,7 +44,7 @@
     "webpack-dev-server": "^4.7.4"
   },
   "consolePlugin": {
-    "name": "console-plugin-template",
+    "name": "hello-console-plugin",
     "version": "0.0.1",
     "displayName": "OpenShift Console Plugin Template",
     "description": "Template project for OpenShift console plugins. Edit package.json to change this message and the plugin name.",

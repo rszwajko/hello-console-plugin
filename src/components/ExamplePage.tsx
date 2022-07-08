@@ -7,10 +7,20 @@ import {
   TextContent,
   Title,
 } from '@patternfly/react-core';
+import { useVms } from '../utils/loader';
+
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
+
+const Internal = () => {
+  const { data } = useVms();
+  return <Text component="p">Data: {JSON.stringify(data)}</Text>;
+};
 
 export default function ExamplePage() {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <Helmet>
         <title>Hello, Plugin!</title>
       </Helmet>
@@ -20,24 +30,10 @@ export default function ExamplePage() {
         </PageSection>
         <PageSection variant="light">
           <TextContent>
-            <Text component="p">Nice! Your plugin is working.</Text>
-            <Text component="p">
-              This is a custom page contributed by the console plugin template.
-              The extension that adds the page is declared in
-              console-extensions.json in the project root along with the
-              corresponding nav item. Update console-extensions.json to change
-              or add extensions. Code references in console-extensions.json must
-              have a corresonding property <code>exposedModules</code> in
-              package.json mapping the reference to the module.
-            </Text>
-            <Text component="p">
-              After cloning this project, replace references to{' '}
-              <code>console-template-plugin</code> and other plugin metadata in
-              package.json with values for your plugin.
-            </Text>
+            <Internal />
           </TextContent>
         </PageSection>
       </Page>
-    </>
+    </QueryClientProvider>
   );
 }

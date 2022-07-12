@@ -7,14 +7,14 @@ import {
   TextContent,
   Title,
 } from '@patternfly/react-core';
-import { useVms } from '../utils/loader';
+import { useProviders } from '../utils/loader';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 const queryClient = new QueryClient();
 
 const Internal = () => {
-  const { data } = useVms();
+  const { data } = useProviders();
   return <Text component="p">Data: {JSON.stringify(data)}</Text>;
 };
 

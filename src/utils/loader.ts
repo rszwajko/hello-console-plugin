@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 
-const TOKEN = '';
+//const TOKEN = '';
 
 export const authorizedFetch = async <TResponse, TData = unknown>(
   url: string,
@@ -8,12 +8,12 @@ export const authorizedFetch = async <TResponse, TData = unknown>(
   returnMode: 'json' | 'blob' = 'json',
   data?: TData,
 ): Promise<TResponse> => {
-  const headersObj = {
-    Authorization: `Bearer ${TOKEN}`,
-  };
+  //  const headersObj = {
+  //    Authorization: `Bearer ${TOKEN}`,
+  //  };
 
   const response = await fetch(url, {
-    headers: headersObj,
+    //    headers: headersObj,
     method,
     ...(data &&
       method !== 'get' && {
@@ -32,12 +32,10 @@ export const useAuthorizedFetch = <T>(url: string): any => {
 };
 
 export const getInventoryApiUrl = (relativePath: string): string =>
-  `/inventory-api/${relativePath}`;
+  `/api/proxy/plugin/hello-console-plugin/forklift-inventory/${relativePath}`;
 
-const PROVIDER = '';
-
-export function useVms() {
+export function useProviders() {
   return useQuery({
-    queryFn: useAuthorizedFetch(getInventoryApiUrl(`${PROVIDER}/vms?detail=1`)),
+    queryFn: useAuthorizedFetch(getInventoryApiUrl('providers')),
   });
 }

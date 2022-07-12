@@ -156,3 +156,11 @@ objects:
         namespace: '${NAMESPACE}'
         port: 9443
         basePath: '/'
+      proxy:                                                                
+      - type: Service                                                     
+        alias: forklift-inventory                                         
+        authorize: true                                                   
+        service:                                                          
+          name: forklift-inventory                                        
+          namespace:  'openshift-mtv'                               
+          port: 8443
